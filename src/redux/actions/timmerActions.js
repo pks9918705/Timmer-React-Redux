@@ -1,11 +1,13 @@
 //! Action module
+ 
+// Action constants
+export const START_TIMER = "Start Timer";
+export const PAUSE_TIMER = "Pause Timer";
+export const RESET_TIMER = "Reset Timer";
+export const INCREMENT_TIMER = "Increment Timer";
 
-//Action creators
-const START_TIMMER="Start Timmer"
-const PAUSE_TIMMER="Pause Timmer"
-const RESET_TIMMER="Reset Timmer"
-
-//Action creators
-const startTimmer=()=>{}
-const pauseTimmer=()=>{}
-const resetTimmer=()=>{}
+// action creators
+export const startTimer = () => ({ type: START_TIMER });
+export const pauseTimer = () => ({ type: PAUSE_TIMER });
+export const resetTimer = () => ({ type: RESET_TIMER });
+export const incrementTimer = () => ({ type: INCREMENT_TIMER });

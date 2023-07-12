@@ -1,18 +1,34 @@
-import React from 'react'
+import { useDispatch, useSelector } from "react-redux";
+import {
+  pauseTimer,
+  resetTimer,
+  startTimer
+} from "../redux/actions/timmerActions";
 
-export default function Buttons({handleReset,handleStart,handlePause}) {
+export const Buttons = () => {
+  const dispatch = useDispatch();
+  const { isRunning } = useSelector((state) => state);
+
   return (
-    <>
-    {/* start button  */}
-    <button onClick={handleStart}>START</button>
-    
-    {/* pause button  */}
-    <button onClick={handlePause}>PAUSE</button>
-
-    {/* reset button  */}
-    <button onClick={handleReset}>REST</button>
-    
-      
-    </>
-  )
-}
+    <div className="actions">
+      <button disabled={isRunning} onClick={() => dispatch(startTimer())}>
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/7709/7709039.png"
+          alt="start"
+        />
+      </button>
+      <button disabled={!isRunning} onClick={() => dispatch(pauseTimer())}>
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/2404/2404385.png"
+          alt="pause"
+        />
+      </button>
+      <button onClick={() => dispatch(resetTimer())}>
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/9923/9923627.png"
+          alt="reset"
+        />
+      </button>
+    </div>
+  );
+};
